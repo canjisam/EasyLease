@@ -7,9 +7,9 @@ import com.cwnu.lease.web.admin.mapper.FeeValueMapper;
 import org.springframework.stereotype.Service;
 
 /**
-* @author liubo
+* @author Jisam
 * @description 针对表【fee_value(杂项费用值表)】的数据库操作Service实现
-* @createDate 2023-07-24 15:48:00
+* @createDate 2024-06-04 15:48:00
 */
 @Service
 public class FeeValueServiceImpl extends ServiceImpl<FeeValueMapper, FeeValue>

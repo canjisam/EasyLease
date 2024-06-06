@@ -7,9 +7,9 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**
- * @author liubo
+ * @author Jisam
  * @description 针对表【view_appointment(预约看房信息表)】的数据库操作Service实现
- * @createDate 2023-07-24 15:48:00
+ * @createDate 2024-06-04 15:48:00
  */
 @Service
 public class ViewAppointmentServiceImpl extends ServiceImpl<ViewAppointmentMapper, ViewAppointment>
