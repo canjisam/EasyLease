@@ -2,7 +2,7 @@ package com.cwnu.lease.model.entity;
 /**
  * 物品类型的枚举类，用于定义不同类型的物品。
  * 枚举值包括公寓和房间，每种类型都有对应的代码和名称。
- * @author Administrator
+ * @author Jisam
  */
 public enum ItemType {
 

@@ -13,7 +13,7 @@ import java.util.Date;
 /**
  * 实体类的基类，用于定义通用的实体属性。
  * 这些属性包括实体的主键、创建时间、更新时间和逻辑删除标志。
- * @author Administrator
+ * @author Jisam
  */
 @Data
 public class BaseEntity {
