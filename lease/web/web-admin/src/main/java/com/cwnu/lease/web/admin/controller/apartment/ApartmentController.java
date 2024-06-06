@@ -4,6 +4,7 @@ package com.cwnu.lease.web.admin.controller.apartment;
 import com.cwnu.lease.common.result.Result;
 import com.cwnu.lease.model.entity.ApartmentInfo;
 import com.cwnu.lease.model.enums.ReleaseStatus;
+import com.cwnu.lease.web.admin.service.ApartmentInfoService;
 import com.cwnu.lease.web.admin.vo.apartment.ApartmentDetailVo;
 import com.cwnu.lease.web.admin.vo.apartment.ApartmentItemVo;
 import com.cwnu.lease.web.admin.vo.apartment.ApartmentQueryVo;
