@@ -2,6 +2,9 @@ package com.cwnu.lease.web.admin.service;
 
 import com.cwnu.lease.model.entity.AttrValue;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.cwnu.lease.web.admin.vo.attr.AttrKeyVo;
+
+import java.util.List;
 
 /**
 * @author liubo
@@ -10,4 +13,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
 */
 public interface AttrValueService extends IService<AttrValue> {
 
+    List<AttrKeyVo> listAttrInfo();
 }
