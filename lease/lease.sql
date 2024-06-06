@@ -11,8 +11,11 @@
  Target Server Version : 80031
  File Encoding         : 65001
 
- Date: 19/08/2023 23:38:48
+ Date: 06/06/2023 12:38:48
 */
+drop database if exists lease;
+create database lease;
+use lease;
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
