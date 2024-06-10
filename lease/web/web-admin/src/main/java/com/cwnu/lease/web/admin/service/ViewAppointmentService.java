@@ -1,5 +1,6 @@
 package com.cwnu.lease.web.admin.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cwnu.lease.model.entity.ViewAppointment;
 import com.cwnu.lease.web.admin.vo.appointment.AppointmentQueryVo;
 import com.cwnu.lease.web.admin.vo.appointment.AppointmentVo;
@@ -12,5 +13,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 * @createDate 2024-06-04 15:48:00
 */
 public interface ViewAppointmentService extends IService<ViewAppointment> {
+
+    IPage<AppointmentVo> pageAppointment(Page<AppointmentVo> page, AppointmentQueryVo queryVo);
 
 }
