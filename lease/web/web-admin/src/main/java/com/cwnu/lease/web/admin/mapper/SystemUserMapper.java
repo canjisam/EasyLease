@@ -15,7 +15,28 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 */
 public interface SystemUserMapper extends BaseMapper<SystemUser> {
 
+    /**
+     * 分页查询系统用户信息。
+     *
+     * 通过分页参数和查询条件，获取系统用户的分页数据。此方法用于支持前端页面的分页查询，
+     * 提供了灵活的查询条件，以便根据不同的需求获取系统用户的数据。
+     *
+     * @param page 分页参数，包含当前页码和每页条数等信息。
+     * @param queryVo 查询条件对象，封装了所有的查询条件。
+     * @return 返回分页结果，其中包含了查询到的系统用户信息。
+     */
     IPage<SystemUserItemVo> pageSystemUser(Page<SystemUser> page, SystemUserQueryVo queryVo);
+
+    /**
+     * 根据用户名查询单个系统用户信息。
+     *
+     * 通过用户名作为唯一标识，查询并返回对应的系统用户信息。此方法主要用于用户登录验证
+     * 和其他需要根据用户名获取用户详细信息的场景。
+     *
+     * @param username 用户名，作为查询条件。
+     * @return 返回匹配用户名的系统用户信息。如果没有找到匹配的用户，返回null。
+     */
+    SystemUser selectOneByUsername(String username);
 }
 
 
