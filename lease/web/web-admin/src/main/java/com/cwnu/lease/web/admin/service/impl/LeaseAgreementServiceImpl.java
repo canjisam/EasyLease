@@ -44,25 +44,25 @@ public class LeaseAgreementServiceImpl extends ServiceImpl<LeaseAgreementMapper,
     @Override
     public AgreementVo getAgreementById(Long id) {
 
-        LeaseAgreement leaseAgreemnet = leaseAgreementMapper.selectById(id);
+        LeaseAgreement leaseAgreement = leaseAgreementMapper.selectById(id);
 
-        ApartmentInfo apartmentInfo = apartmentInfoMapper.selectById(leaseAgreemnet.getApartmentId());
+        ApartmentInfo apartmentInfo = apartmentInfoMapper.selectById(leaseAgreement.getApartmentId());
 
-        RoomInfo roomInfo = roomInfoMapper.selectById(leaseAgreemnet.getRoomId());
+        RoomInfo roomInfo = roomInfoMapper.selectById(leaseAgreement.getRoomId());
 
-        PaymentType paymentType = paymentTypeMapper.selectById(leaseAgreemnet.getPaymentTypeId());
+        PaymentType paymentType = paymentTypeMapper.selectById(leaseAgreement.getPaymentTypeId());
 
-        LeaseTerm leaseTerm = leaseTermMapper.selectById(leaseAgreemnet.getLeaseTermId());
+        LeaseTerm leaseTerm = leaseTermMapper.selectById(leaseAgreement.getLeaseTermId());
 
         AgreementVo agreementVo = new AgreementVo();
-        BeanUtils.copyProperties(leaseAgreemnet,agreementVo);
+        BeanUtils.copyProperties(leaseAgreement,agreementVo);
         agreementVo.setApartmentInfo(apartmentInfo);
         agreementVo.setRoomInfo(roomInfo);
         agreementVo.setLeaseTerm(leaseTerm);
         agreementVo.setPaymentType(paymentType);
 
 
-        return null;
+        return agreementVo;
     }
 }
 
