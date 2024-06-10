@@ -15,6 +15,12 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ *
+ * 杂费管理控制
+ *包括杂费名称和杂费值的查询、新增、修改、删除操作
+ *
+ */
 
 @Tag(name = "房间杂费管理")
 @RestController

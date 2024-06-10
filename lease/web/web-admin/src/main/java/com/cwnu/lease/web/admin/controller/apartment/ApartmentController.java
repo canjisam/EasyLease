@@ -16,7 +16,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
+/**
+ * 公寓信息管理的控制
+ *包括查询、创建、更新、修改和删除操作
+ */
 @Tag(name = "公寓信息管理")
 @RestController
 @RequestMapping("/admin/apartment")

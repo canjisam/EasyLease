@@ -19,6 +19,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * 省市区信息管理控制
+ * 主要包括省市区信息的查询
+ */
+
 @Tag(name = "地区信息管理")
 @RestController
 @RequestMapping("/admin/region")
