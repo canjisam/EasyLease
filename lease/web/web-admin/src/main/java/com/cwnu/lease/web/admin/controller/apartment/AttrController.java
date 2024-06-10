@@ -16,6 +16,10 @@ import org.springframework.web.bind.annotation.*;
 import java.lang.invoke.LambdaConversionException;
 import java.util.List;
 
+/**
+ * 房间属性管理控制器
+ * 包括属性名称和属性值的查询、创建、修改、删除的操作
+ */
 
 @Tag(name = "房间属性管理")
 @RestController
