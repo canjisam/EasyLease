@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * Knife4j配置类，用于配置Swagger的OpenAPI文档。
  * 通过此类，可以定义不同的API分组，以便更好地组织和管理API文档。
- * @author Administrator
+ * @author jisam
  */
 @Configuration
 public class Knife4jConfiguration {

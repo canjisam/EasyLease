@@ -2,7 +2,6 @@ package com.cwnu.lease.common.minio;
 
 import io.minio.MinioClient;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 @EnableConfigurationProperties(MinioProperties.class)
 //方法二:
 //@ConfigurationPropertiesScan（"com.cwnu.lease.common.minio"）
-public class Minioconfiguration {
+public class MinioConfiguration {
 
     //用刚映射好的参数
     @Autowired
