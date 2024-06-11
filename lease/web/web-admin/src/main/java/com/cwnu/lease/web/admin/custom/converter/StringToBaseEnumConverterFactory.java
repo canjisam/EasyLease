@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * 实现了将字符串转换为基类枚举的转换器工厂。
  * 该工厂用于生产特定于枚举类型的转换器，这些转换器能够将字符串转换为相应的枚举常量。
  *
- * @author Administrator
+ * @author Jisam
  */
 @Component
 public class StringToBaseEnumConverterFactory implements ConverterFactory<String, BaseEnum> {

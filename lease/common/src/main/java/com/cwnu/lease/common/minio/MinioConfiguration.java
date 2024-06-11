@@ -2,6 +2,7 @@ package com.cwnu.lease.common.minio;
 
 import io.minio.MinioClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,10 +10,11 @@ import org.springframework.context.annotation.Configuration;
 /**
  * MinIO配置类。
  * 该类配置了MinIO客户端的bean，并基于MinIO服务端的属性进行初始化。
- * @author Administrator
+ * @author Jisam
  */
 @Configuration
 @EnableConfigurationProperties(MinioProperties.class)
+@ConditionalOnProperty(name = "minio.endpoint")
 public class MinioConfiguration {
 
     /**

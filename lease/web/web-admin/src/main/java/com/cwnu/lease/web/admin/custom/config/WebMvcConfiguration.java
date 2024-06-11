@@ -5,12 +5,13 @@ import com.cwnu.lease.web.admin.custom.interceptor.AuthenticationInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * 配置WebMvc的自定义设置。
  * 通过实现WebMvcConfigurer接口，可以定制Spring MVC的行为，而不必继承WebMvcConfigurerAdapter。
- * @author Administrator
+ * @author Jisam
  */
 @Configuration
 public class WebMvcConfiguration implements WebMvcConfigurer {
@@ -42,11 +43,11 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
      * @param registry InterceptorRegistry，用于注册拦截器。
      */
 //    暂时关闭认证拦截器方便调试
-//    @Override
-//    public void addInterceptors(InterceptorRegistry registry) {
-//        registry.addInterceptor(this.authenticationInterceptor)
-//                .addPathPatterns("/admin/**")
-//                .excludePathPatterns("/admin/login/**");
-//    }
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(this.authenticationInterceptor)
+                .addPathPatterns("/admin/**")
+                .excludePathPatterns("/admin/login/**");
+    }
 
 }

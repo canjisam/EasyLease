@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
  * Minio配置类。
  * 该类用于配置Minio客户端，只有在属性文件中指定了"minio.endpoint"时才会生效。
  * 它利用MinioProperties类中的属性来创建MinioClient实例。
- * @author Administrator
+ * @author Jisam
  */
 @Configuration
 @EnableConfigurationProperties(MinioProperties.class)

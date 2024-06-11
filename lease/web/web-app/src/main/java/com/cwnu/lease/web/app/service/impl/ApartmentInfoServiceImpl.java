@@ -4,6 +4,7 @@ import com.cwnu.lease.model.entity.ApartmentInfo;
 import com.cwnu.lease.web.app.mapper.ApartmentInfoMapper;
 import com.cwnu.lease.web.app.service.ApartmentInfoService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.cwnu.lease.web.app.vo.apartment.ApartmentItemVo;
 import org.springframework.stereotype.Service;
 
 /**
@@ -14,6 +15,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class ApartmentInfoServiceImpl extends ServiceImpl<ApartmentInfoMapper, ApartmentInfo>
         implements ApartmentInfoService {
+    @Override
+    public ApartmentItemVo selectApartmentItemVoById(Long apartmentId) {
+        return null;
+    }
 }
 
 

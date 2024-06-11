@@ -8,7 +8,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * MinIO服务配置属性类。
  * 使用@ConfigurationProperties注解将此类绑定到配置文件中以minio为前缀的属性。
  * 通过这种方式，可以从配置文件中自动加载MinIO服务的相关配置，方便集成MinIO存储服务。
- * @author Administrator
+ * @author Jisam
  */
 @ConfigurationProperties(prefix = "minio")
 @Data

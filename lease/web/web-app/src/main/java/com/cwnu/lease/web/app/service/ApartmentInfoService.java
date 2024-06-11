@@ -2,6 +2,7 @@ package com.cwnu.lease.web.app.service;
 
 import com.cwnu.lease.model.entity.ApartmentInfo;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.cwnu.lease.web.app.vo.apartment.ApartmentItemVo;
 
 /**
  * @author Jisam
@@ -9,4 +10,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @createDate 2024-06-04 15:48:00
  */
 public interface ApartmentInfoService extends IService<ApartmentInfo> {
+    ApartmentItemVo selectApartmentItemVoById(Long apartmentId);
 }

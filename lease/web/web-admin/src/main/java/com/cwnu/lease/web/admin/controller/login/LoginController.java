@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
  * 后台管理系统登录相关的控制器。
  * 该控制器负责处理登录验证、获取验证码、以及登录用户信息的请求。
  *
- * @author Administrator
+ * @author Jisam
  */
 @Tag(name = "后台管理系统登录管理")
 @RestController

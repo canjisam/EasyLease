@@ -7,7 +7,7 @@ import lombok.Data;
 /**
  * 租赁业务异常类，用于表示租赁业务中出现的特定异常情况。
  * 继承自RuntimeException，表示这是一种非检查（Unchecked）异常。
- * @author Administrator
+ * @author Jisam
  */
 @Data
 public class LeaseException extends RuntimeException{

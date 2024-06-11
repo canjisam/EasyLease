@@ -14,7 +14,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
  * 认证拦截器，用于在请求处理之前进行认证检查。
  * 通过检查请求头中的access_token来判断请求是否合法。
  *
- * @author Administrator
+ * @author Jisam
  */
 @Component
 public class AuthenticationInterceptor implements HandlerInterceptor {
