@@ -1,4 +1,4 @@
-package com.cwnu.lease.web.admin.controller.login.system;
+package com.cwnu.lease.web.admin.controller.system;
 
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
