@@ -1,9 +1,9 @@
 package com.cwnu.lease.web.admin.custom.interceptor;
 
-import com.baomidou.mybatisplus.core.toolkit.StringUtils;
-import com.cwnu.lease.common.exception.LeaseException;
-import com.cwnu.lease.common.result.ResultCodeEnum;
+import com.cwnu.lease.common.login.LoginUser;
+import com.cwnu.lease.common.login.LoginUserHolder;
 import com.cwnu.lease.common.utils.JwtUtil;
+import io.jsonwebtoken.Claims;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.jetbrains.annotations.NotNull;
@@ -35,16 +35,15 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
         // 从请求头中获取access_token
         String token = request.getHeader("access-token");
 
-        // 如果token不存在，则抛出异常，表示令牌已过期或无效
-        if (StringUtils.isEmpty(token)) {
-            System.out.println("access-token:" + token);
-            throw new LeaseException(ResultCodeEnum.TOKEN_EXPIRED);
-        }
+        Claims claims = JwtUtil.parseToken(token);
+        Long userId = claims.get("userId", Long.class);
+        String username = claims.get("username", String.class);
+        LoginUserHolder.set(new LoginUser(userId, username));
 
-        // 验证token的有效性，此处没有对验证过程进行异常处理，假设验证过程不会失败。
-        JwtUtil.parseToken(token);
-
-        // 如果token验证通过，返回true，表示请求可以继续进行。
         return true;
+    }
+    @Override
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+        LoginUserHolder.remove();
     }
 }

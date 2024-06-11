@@ -1,13 +1,12 @@
 package com.cwnu.lease.web.admin.controller.login;
 
 
+import com.cwnu.lease.common.login.LoginUserHolder;
 import com.cwnu.lease.common.result.Result;
-import com.cwnu.lease.common.utils.JwtUtil;
 import com.cwnu.lease.web.admin.service.LoginService;
 import com.cwnu.lease.web.admin.vo.login.CaptchaVo;
 import com.cwnu.lease.web.admin.vo.login.LoginVo;
 import com.cwnu.lease.web.admin.vo.system.user.SystemUserInfoVo;
-import io.jsonwebtoken.Claims;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,14 +60,12 @@ public class LoginController {
      * 获取登录用户个人信息。
      * 该接口用于在用户登录后，通过JWT令牌获取用户的个人信息。
      *
-     * @param token 用户的JWT令牌，用于验证用户身份并获取用户信息。
      * @return 返回登录用户的个人信息。
      */
     @Operation(summary = "获取登陆用户个人信息")
     @GetMapping("info")
-    public Result<SystemUserInfoVo> info(@RequestHeader("access-token") String token) {
-        Claims claims = JwtUtil.parseToken(token);
-        Long userId = claims.get("userId", Long.class);
+    public Result<SystemUserInfoVo> info() {
+        Long userId = LoginUserHolder.get().getUserId();
         SystemUserInfoVo result = service.getLoginUserInfoById(userId);
         return Result.ok(result);
     }
