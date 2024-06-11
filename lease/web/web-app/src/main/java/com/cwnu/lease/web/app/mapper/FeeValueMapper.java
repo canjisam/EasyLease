@@ -1,10 +1,8 @@
 package com.cwnu.lease.web.app.mapper;
 
-import com.cwnu.lease.model.entity.FeeValue;
-import com.cwnu.lease.web.app.vo.fee.FeeValueVo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-
-import java.util.List;
+import com.cwnu.lease.model.entity.FeeValue;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
 * @author Jisam
@@ -12,6 +10,7 @@ import java.util.List;
 * @createDate 2024-06-04 15:48:00
 * @Entity com.cwnu.lease.model.entity.FeeValue
 */
+@Mapper
 public interface FeeValueMapper extends BaseMapper<FeeValue> {
 
 }

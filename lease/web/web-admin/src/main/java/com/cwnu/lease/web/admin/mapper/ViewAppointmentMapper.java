@@ -6,6 +6,7 @@ import com.cwnu.lease.web.admin.vo.appointment.AppointmentQueryVo;
 import com.cwnu.lease.web.admin.vo.appointment.AppointmentVo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
 * @author Jisam
@@ -13,6 +14,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 * @createDate 2024-06-04 15:48:00
 * @Entity com.cwnu.lease.model.ViewAppointment
 */
+@Mapper
 public interface ViewAppointmentMapper extends BaseMapper<ViewAppointment> {
 
     IPage<AppointmentVo> pageAppointment(Page<AppointmentVo> page, AppointmentQueryVo queryVo);

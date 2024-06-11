@@ -2,6 +2,7 @@ package com.cwnu.lease.web.app.mapper;
 
 import com.cwnu.lease.model.entity.ApartmentFacility;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
 * @author Jisam
@@ -9,6 +10,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 * @createDate 2024-06-04 15:48:00
 * @Entity com.cwnu.lease.model.entity.ApartmentFacility
 */
+@Mapper
 public interface ApartmentFacilityMapper extends BaseMapper<ApartmentFacility> {
 
 }

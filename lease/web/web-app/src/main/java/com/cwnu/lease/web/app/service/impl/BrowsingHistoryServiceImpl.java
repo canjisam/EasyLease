@@ -54,6 +54,7 @@ public class BrowsingHistoryServiceImpl extends ServiceImpl<BrowsingHistoryMappe
     @Override
     @Async
     public void saveHistory(Long userId, Long roomId) {
+
         // 构建查询条件，检查是否已存在相同的浏览记录
         LambdaQueryWrapper<BrowsingHistory> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(BrowsingHistory::getUserId, userId);

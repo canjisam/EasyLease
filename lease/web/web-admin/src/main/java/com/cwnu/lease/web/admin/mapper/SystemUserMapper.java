@@ -6,6 +6,7 @@ import com.cwnu.lease.web.admin.vo.system.user.SystemUserItemVo;
 import com.cwnu.lease.web.admin.vo.system.user.SystemUserQueryVo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
 * @author Jisam
@@ -13,6 +14,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 * @createDate 2024-06-04 15:48:00
 * @Entity com.cwnu.lease.model.SystemUser
 */
+@Mapper
 public interface SystemUserMapper extends BaseMapper<SystemUser> {
 
     /**

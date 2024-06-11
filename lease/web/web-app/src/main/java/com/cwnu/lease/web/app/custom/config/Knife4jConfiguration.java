@@ -38,9 +38,11 @@ public class Knife4jConfiguration {
      */
     @Bean
     public GroupedOpenApi loginAPI() {
-        return GroupedOpenApi.builder().group("登录信息").
-                pathsToMatch("/app/login/**"
-                        , "/app/info")
+        return GroupedOpenApi.builder().group("登录信息")
+                .pathsToMatch(
+                        "/app/login/**"
+                        , "/app/info"
+                )
                 .build();
     }
 

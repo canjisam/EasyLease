@@ -1,13 +1,8 @@
 package com.cwnu.lease.web.app.mapper;
 
-import com.cwnu.lease.model.entity.RoomInfo;
-import com.cwnu.lease.web.app.vo.room.RoomItemVo;
-import com.cwnu.lease.web.app.vo.room.RoomQueryVo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-
-import java.math.BigDecimal;
+import com.cwnu.lease.model.entity.RoomInfo;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
 * @author Jisam
@@ -15,6 +10,7 @@ import java.math.BigDecimal;
 * @createDate 2024-06-04 15:48:00
 * @Entity com.cwnu.lease.model.entity.RoomInfo
 */
+@Mapper
 public interface RoomInfoMapper extends BaseMapper<RoomInfo> {
 
 }

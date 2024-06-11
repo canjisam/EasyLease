@@ -1,12 +1,10 @@
 package com.cwnu.lease.web.app.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cwnu.lease.model.entity.RoomInfo;
 import com.cwnu.lease.web.app.mapper.RoomInfoMapper;
-import com.cwnu.lease.web.app.service.BrowsingHistoryService;
 import com.cwnu.lease.web.app.service.RoomInfoService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -18,9 +16,7 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class RoomInfoServiceImpl extends ServiceImpl<RoomInfoMapper, RoomInfo>
         implements RoomInfoService {
-    @Autowired
-    private BrowsingHistoryService browsingHistoryService;
-      browsingHistoryService.saveHistory(LoginUserContext.getLoginUser().getUserId(), id);
+
 }
 
 

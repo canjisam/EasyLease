@@ -1,9 +1,8 @@
 package com.cwnu.lease.web.admin.mapper;
 
-import com.cwnu.lease.model.entity.FacilityInfo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-
-import java.util.List;
+import com.cwnu.lease.model.entity.FacilityInfo;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
 * @author Jisam
@@ -11,6 +10,7 @@ import java.util.List;
 * @createDate 2024-06-04 15:48:00
 * @Entity com.cwnu.lease.model.FacilityInfo
 */
+@Mapper
 public interface FacilityInfoMapper extends BaseMapper<FacilityInfo> {
 
 }
