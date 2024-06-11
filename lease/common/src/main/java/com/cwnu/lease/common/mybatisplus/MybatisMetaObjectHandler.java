@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 /**
  * Mybatis自定义MetaObjectHandler，用于自动填充创建时间和更新时间。
- * @author Administrator
+ * @author Jisam
  * @Component 注解表示该类被Spring管理为一个Bean。
  */
 @Component

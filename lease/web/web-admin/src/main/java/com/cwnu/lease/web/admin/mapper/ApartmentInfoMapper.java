@@ -9,9 +9,9 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 /**
-* @author liubo
+* @author Jisam
 * @description 针对表【apartment_info(公寓信息表)】的数据库操作Mapper
-* @createDate 2023-07-24 15:48:00
+* @createDate 2024-06-04 15:48:00
 * @Entity com.cwnu.lease.model.ApartmentInfo
 */
 public interface ApartmentInfoMapper extends BaseMapper<ApartmentInfo> {

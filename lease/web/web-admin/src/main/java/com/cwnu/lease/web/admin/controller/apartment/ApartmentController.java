@@ -4,6 +4,7 @@ package com.cwnu.lease.web.admin.controller.apartment;
 import com.cwnu.lease.common.result.Result;
 import com.cwnu.lease.model.entity.ApartmentInfo;
 import com.cwnu.lease.model.enums.ReleaseStatus;
+import com.cwnu.lease.web.admin.service.ApartmentInfoService;
 import com.cwnu.lease.web.admin.vo.apartment.ApartmentDetailVo;
 import com.cwnu.lease.web.admin.vo.apartment.ApartmentItemVo;
 import com.cwnu.lease.web.admin.vo.apartment.ApartmentQueryVo;
@@ -15,7 +16,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
+/**
+ * 公寓信息管理的控制
+ *包括查询、创建、更新、修改和删除操作
+ */
 @Tag(name = "公寓信息管理")
 @RestController
 @RequestMapping("/admin/apartment")
