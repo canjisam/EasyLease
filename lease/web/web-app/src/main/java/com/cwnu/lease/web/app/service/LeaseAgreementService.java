@@ -2,6 +2,9 @@ package com.cwnu.lease.web.app.service;
 
 import com.cwnu.lease.model.entity.LeaseAgreement;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.cwnu.lease.web.app.vo.agreement.AgreementItemVo;
+
+import java.util.List;
 
 /**
 * @author Jisam
@@ -9,4 +12,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
 * @createDate 2024-06-04 15:48:00
 */
 public interface LeaseAgreementService extends IService<LeaseAgreement> {
+    List<AgreementItemVo> listItemByPhone(String phone);
 }
