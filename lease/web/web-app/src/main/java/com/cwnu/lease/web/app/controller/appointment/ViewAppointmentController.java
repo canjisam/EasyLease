@@ -33,6 +33,8 @@ public class ViewAppointmentController {
     @Operation(summary = "查询个人预约看房列表")
     @GetMapping("listItem")
     public Result<List<AppointmentItemVo>> listItem() {
+        System.out.println("username"+LoginUserHolder.get().getUsername());
+
         List<AppointmentItemVo> result = service.listItemByUserId(LoginUserHolder.get().getUserId());
         return Result.ok(result);
     }
@@ -41,7 +43,7 @@ public class ViewAppointmentController {
     @Operation(summary = "根据ID查询预约详情信息")
     public Result<AppointmentDetailVo> getDetailById(Long id) {
         AppointmentDetailVo result = service.getDetailById(id);
-        return Result.ok();
+        return Result.ok(result);
     }
 
 }
