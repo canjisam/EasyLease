@@ -13,7 +13,6 @@ import org.springframework.context.annotation.Configuration;
  * @author Jisam
  */
 
-@ConditionalOnProperty(name = "minio.endpoint")
 @Configuration
 @EnableConfigurationProperties(MinioProperties.class)
 @ConditionalOnProperty(name = "minio.endpoint")

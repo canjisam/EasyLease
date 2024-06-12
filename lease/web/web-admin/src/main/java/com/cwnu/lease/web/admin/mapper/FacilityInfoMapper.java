@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.cwnu.lease.model.entity.FacilityInfo;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 /**
 * @author Jisam
 * @description 针对表【facility_info(配套信息表)】的数据库操作Mapper

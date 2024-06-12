@@ -1,8 +1,8 @@
 package com.cwnu.lease.web.admin.mapper;
 
-import com.cwnu.lease.model.entity.LabelInfo;
-import com.cwnu.lease.model.enums.ItemType;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.cwnu.lease.model.entity.LabelInfo;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 

@@ -1,7 +1,11 @@
 package com.cwnu.lease.web.admin.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cwnu.lease.model.entity.ApartmentInfo;
+import com.cwnu.lease.web.admin.vo.apartment.ApartmentItemVo;
+import com.cwnu.lease.web.admin.vo.apartment.ApartmentQueryVo;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

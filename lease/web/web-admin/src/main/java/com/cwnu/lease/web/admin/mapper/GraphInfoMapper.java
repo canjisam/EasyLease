@@ -2,7 +2,11 @@ package com.cwnu.lease.web.admin.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.cwnu.lease.model.entity.GraphInfo;
+import com.cwnu.lease.model.enums.ItemType;
+import com.cwnu.lease.web.admin.vo.graph.GraphVo;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
 * @author Jisam
@@ -13,7 +17,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface GraphInfoMapper extends BaseMapper<GraphInfo> {
 
-    List<GraphVo> selectListByItemTypeAndId(ItemType apartment, Long id);
+    List<GraphVo> selectListByItemTypeAndId(ItemType itemType, Long itemId);
 
 }
 
