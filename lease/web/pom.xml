@@ -64,5 +64,6 @@
             <artifactId>minio</artifactId>
             <version>${minio.version}</version>
         </dependency>
+
     </dependencies>
 </project>

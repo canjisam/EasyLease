@@ -30,7 +30,7 @@
         <easycaptcha.version>1.6.2</easycaptcha.version>
         <minio.version>8.2.0</minio.version>
         <knife4j.version>4.1.0</knife4j.version>
-        <aliyun.sms.version>2.0.23</aliyun.sms.version>
+        <aliyun.sms.version>2.0.1</aliyun.sms.version>
     </properties>
 
     <!--配置dependencyManagement统一管理依赖版本-->

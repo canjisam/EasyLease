@@ -2,6 +2,7 @@ package com.cwnu.lease.web.app.mapper;
 
 import com.cwnu.lease.model.entity.UserInfo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.cwnu.lease.web.app.vo.user.UserInfoVo;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -12,7 +13,7 @@ import org.apache.ibatis.annotations.Mapper;
 */
 @Mapper
 public interface UserInfoMapper extends BaseMapper<UserInfo> {
-
+    UserInfo getLoginUserById(Long userId);
 }
 
 
