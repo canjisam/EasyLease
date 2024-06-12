@@ -1,8 +1,10 @@
 package com.cwnu.lease.web.admin.mapper;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.cwnu.lease.model.entity.LabelInfo;
-import org.apache.ibatis.annotations.Mapper;
+import com.cwnu.lease.model.enums.ItemType;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+
+import java.util.List;
 
 /**
 * @author Jisam
@@ -13,8 +15,10 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface LabelInfoMapper extends BaseMapper<LabelInfo> {
 
+    List<LabelInfo> selectListByApartmentId(Long id);
+
+    List<LabelInfo> selectListByRoomId(Long id);
+
 }
-
-
 
 

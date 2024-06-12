@@ -90,4 +90,15 @@ public class Result<T> {
     public static <T> Result<T> fail() {
         return build(null, ResultCodeEnum.FAIL);
     }
+
+
+
+
+    //xqs
+    public static <T> Result<T> fail(Integer code, String message) {
+        Result<T> result = build(null);
+        result.setCode(code);
+        result.setMessage(message);
+        return result;
+    }
 }

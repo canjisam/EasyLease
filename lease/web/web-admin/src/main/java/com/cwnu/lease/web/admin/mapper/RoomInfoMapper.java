@@ -13,6 +13,9 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface RoomInfoMapper extends BaseMapper<RoomInfo> {
 
+    IPage<RoomItemVo> pageRoomItemByQuery(IPage<RoomItemVo> page, RoomQueryVo queryVo);
+
+
 }
 
 

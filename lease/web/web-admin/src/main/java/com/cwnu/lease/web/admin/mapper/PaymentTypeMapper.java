@@ -13,6 +13,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface PaymentTypeMapper extends BaseMapper<PaymentType> {
 
+    List<PaymentType> selectListByRoomId(Long id);
 }
 
 

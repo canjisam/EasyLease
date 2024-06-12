@@ -12,6 +12,8 @@ import org.springframework.context.annotation.Configuration;
  * 该类配置了MinIO客户端的bean，并基于MinIO服务端的属性进行初始化。
  * @author Jisam
  */
+
+@ConditionalOnProperty(name = "minio.endpoint")
 @Configuration
 @EnableConfigurationProperties(MinioProperties.class)
 @ConditionalOnProperty(name = "minio.endpoint")

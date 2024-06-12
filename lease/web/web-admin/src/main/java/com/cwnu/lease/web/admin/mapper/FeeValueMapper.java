@@ -13,8 +13,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface FeeValueMapper extends BaseMapper<FeeValue> {
 
+    List<FeeValueVo> selectListByApartmentId(Long id);
 }
-
-
 
 

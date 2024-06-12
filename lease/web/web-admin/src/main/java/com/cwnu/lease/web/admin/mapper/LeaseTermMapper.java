@@ -13,6 +13,8 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface LeaseTermMapper extends BaseMapper<LeaseTerm> {
 
+    List<LeaseTerm> selectListByRoomId(Long id);
+
 }
 
 

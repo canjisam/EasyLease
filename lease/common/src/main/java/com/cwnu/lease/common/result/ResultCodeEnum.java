@@ -60,6 +60,10 @@ public enum ResultCodeEnum {
     ADMIN_CAPTCHA_CODE_NOT_FOUND(304, "未输入验证码"),
 
 
+
+    ADMIN_APARTMENT_DELETE_ERROR(444,"无法删除，请先删除前置条件"),
+
+
     /**
      * 未登陆
      */

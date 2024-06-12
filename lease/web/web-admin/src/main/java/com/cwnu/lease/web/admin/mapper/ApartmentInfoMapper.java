@@ -13,7 +13,10 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface ApartmentInfoMapper extends BaseMapper<ApartmentInfo> {
 
+    IPage<ApartmentItemVo> pageItem(Page<ApartmentItemVo> page, ApartmentQueryVo queryVo);
 }
+
+
 
 
 

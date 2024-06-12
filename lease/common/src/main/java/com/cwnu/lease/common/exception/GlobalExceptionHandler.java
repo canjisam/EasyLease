@@ -18,4 +18,12 @@ public class GlobalExceptionHandler {
         e.printStackTrace();
         return Result.fail();
     }
+
+    //xqs    增加自定义异常类的处理逻辑
+    @ExceptionHandler(LeaseException.class)
+    @ResponseBody
+    public Result error(LeaseException e){
+        e.printStackTrace();
+        return Result.fail(e.getCode(), e.getMessage());
+    }
 }

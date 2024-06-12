@@ -13,6 +13,8 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface AttrValueMapper extends BaseMapper<AttrValue> {
 
+    List<AttrValueVo> selectListByRoomId(Long id);
+
 }
 
 
