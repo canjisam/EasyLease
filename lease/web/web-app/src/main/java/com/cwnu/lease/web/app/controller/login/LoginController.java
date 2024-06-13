@@ -1,4 +1,4 @@
-package com.cwnu.lease.web.app.controller.history.login;
+package com.cwnu.lease.web.app.controller.login;
 
 
 import com.cwnu.lease.common.login.LoginUserHolder;

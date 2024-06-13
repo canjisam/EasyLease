@@ -3,6 +3,10 @@ package com.cwnu.lease.model.enums;
 import com.baomidou.mybatisplus.annotation.EnumValue;
 import com.fasterxml.jackson.annotation.JsonValue;
 
+/**
+ * @author Administrator
+ */
+
 public enum LeaseStatus implements BaseEnum {
 
     SIGNING(1, "签约待确认"),

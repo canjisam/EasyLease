@@ -4,6 +4,10 @@ import com.baomidou.mybatisplus.annotation.EnumValue;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 
+/**
+ * @author Administrator
+ */
+
 public enum LeaseSourceType implements BaseEnum {
 
     NEW(1, "新签"),
