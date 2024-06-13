@@ -8,8 +8,10 @@ import io.jsonwebtoken.security.Keys;
 
 import javax.crypto.SecretKey;
 import java.util.Date;
+
 /**
  * JWT工具类，用于生成和解析JWT令牌。
+ *
  * @author jisam
  */
 public class JwtUtil {
@@ -17,8 +19,8 @@ public class JwtUtil {
     /**
      * 令牌过期时间，单位为毫秒，默认为1小时。
      */
-    // 测试环境写一年过期时间
-    private static long tokenExpiration = 365 * 24 * 60 * 60 *1000L;
+    private static long tokenExpiration = 365 * 24 * 60 * 60 * 1000L;
+
 
     /**
      * 用于令牌签名的密钥。
@@ -28,19 +30,19 @@ public class JwtUtil {
     /**
      * 生成JWT令牌。
      *
-     * @param userId 用户ID。
+     * @param userId   用户ID。
      * @param username 用户名。
      * @return 生成的JWT令牌字符串。
      */
     public static String createToken(Long userId, String username) {
-        String token = Jwts.builder().
-                setSubject("USER_INFO").
-                setExpiration(new Date(System.currentTimeMillis() + tokenExpiration)).
-                claim("userId", userId).
-                claim("username", username).
-                signWith(tokenSignKey).
-                compressWith(CompressionCodecs.GZIP).
-                compact();
+        String token = Jwts.builder()
+                .setSubject("USER_INFO")
+                .setExpiration(new Date(System.currentTimeMillis() + tokenExpiration))
+                .claim("userId", userId)
+                .claim("username", username)
+                .signWith(tokenSignKey, SignatureAlgorithm.HS256)
+                .compressWith(CompressionCodecs.GZIP)
+                .compact();
         return token;
     }
 
@@ -73,6 +75,8 @@ public class JwtUtil {
      * 测试
      */
     public static void main(String[] args) {
-        System.out.println(createToken(1L, "zhangsan"));
+
+        System.out.println(JwtUtil.createToken(1L, "admin"));
+        ;
     }
 }

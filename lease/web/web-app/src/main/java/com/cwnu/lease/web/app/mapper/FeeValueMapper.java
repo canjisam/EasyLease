@@ -2,7 +2,10 @@ package com.cwnu.lease.web.app.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.cwnu.lease.model.entity.FeeValue;
+import com.cwnu.lease.web.app.vo.fee.FeeValueVo;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
 * @author Jisam
@@ -12,7 +15,7 @@ import org.apache.ibatis.annotations.Mapper;
 */
 @Mapper
 public interface FeeValueMapper extends BaseMapper<FeeValue> {
-
+    List<FeeValueVo> selectListByApartmentId(Long id);
 }
 
 
