@@ -2,7 +2,9 @@ package com.cwnu.lease.web.admin.service.impl;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.cwnu.lease.common.result.Result;
 import com.cwnu.lease.model.entity.ViewAppointment;
+import com.cwnu.lease.model.enums.AppointmentStatus;
 import com.cwnu.lease.web.admin.mapper.ViewAppointmentMapper;
 import com.cwnu.lease.web.admin.service.ViewAppointmentService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -26,6 +28,12 @@ public class ViewAppointmentServiceImpl extends ServiceImpl<ViewAppointmentMappe
     @Override
     public IPage<AppointmentVo> pageAppointment(Page<AppointmentVo> page, AppointmentQueryVo queryVo) {
         return viewAppointmentMapper.pageAppointment(page,queryVo);
+    }
+
+    @Override
+    public Result updateStatusById(Long id, AppointmentStatus status) {
+        viewAppointmentMapper.updateStatusById(id,status);
+        return Result.ok();
     }
 }
 

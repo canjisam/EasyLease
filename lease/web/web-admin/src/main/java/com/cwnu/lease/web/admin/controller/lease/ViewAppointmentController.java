@@ -1,6 +1,5 @@
 package com.cwnu.lease.web.admin.controller.lease;
 
-
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cwnu.lease.common.result.Result;
@@ -37,11 +36,8 @@ public class ViewAppointmentController {
     @Operation(summary = "根据id更新预约状态")
     @PostMapping("updateStatusById")
     public Result updateStatusById(@RequestParam Long id, @RequestParam AppointmentStatus status) {
-        LambdaUpdateWrapper<ViewAppointment> updateWrapper = new LambdaUpdateWrapper<>();
-        updateWrapper.eq(ViewAppointment::getId, id);
-        updateWrapper.set(ViewAppointment::getAppointmentStatus, status);
-        service.update(updateWrapper);
-        return Result.ok();
+
+        return service.updateStatusById(id,status);
     }
 
 }

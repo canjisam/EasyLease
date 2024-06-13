@@ -1,12 +1,15 @@
 package com.cwnu.lease.web.admin.mapper;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.cwnu.lease.common.result.Result;
 import com.cwnu.lease.model.entity.ViewAppointment;
+import com.cwnu.lease.model.enums.AppointmentStatus;
 import com.cwnu.lease.web.admin.vo.appointment.AppointmentQueryVo;
 import com.cwnu.lease.web.admin.vo.appointment.AppointmentVo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Update;
 
 /**
 * @author Jisam
@@ -18,6 +21,8 @@ import org.apache.ibatis.annotations.Mapper;
 public interface ViewAppointmentMapper extends BaseMapper<ViewAppointment> {
 
     IPage<AppointmentVo> pageAppointment(Page<AppointmentVo> page, AppointmentQueryVo queryVo);
+    @Update("update view_appointment set appointment_status = #{status} where id = #{id}")
+    int updateStatusById(Long id, AppointmentStatus status);
 }
 
 
