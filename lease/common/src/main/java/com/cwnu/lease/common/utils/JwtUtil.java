@@ -17,7 +17,8 @@ public class JwtUtil {
     /**
      * 令牌过期时间，单位为毫秒，默认为1小时。
      */
-    private static long tokenExpiration = 60 * 60 * 1000L;
+    // 测试环境写一年过期时间
+    private static long tokenExpiration = 365 * 24 * 60 * 60 *1000L;
 
     /**
      * 用于令牌签名的密钥。
