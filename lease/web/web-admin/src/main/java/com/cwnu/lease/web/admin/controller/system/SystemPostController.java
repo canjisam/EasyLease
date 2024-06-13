@@ -18,7 +18,7 @@ import java.util.List;
  * @author Jisam
  */
 @RestController
-@RequestMapping("/post")
+@RequestMapping("/admin/system/post")
 public class SystemPostController {
 
     /**
