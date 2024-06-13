@@ -1,9 +1,11 @@
 package com.cwnu.lease.web.app.service.impl;
 
+import com.cwnu.lease.common.result.Result;
 import com.cwnu.lease.model.entity.LeaseAgreement;
 import com.cwnu.lease.web.app.mapper.LeaseAgreementMapper;
 import com.cwnu.lease.web.app.service.LeaseAgreementService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.cwnu.lease.web.app.vo.agreement.AgreementDetailVo;
 import com.cwnu.lease.web.app.vo.agreement.AgreementItemVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +26,12 @@ public class LeaseAgreementServiceImpl extends ServiceImpl<LeaseAgreementMapper,
     @Override
     public List<AgreementItemVo> listItemByPhone(String phone) {
         return leaseAgreementMapper.listItemByPhone(phone);
+    }
+
+    @Override
+    public Result<AgreementDetailVo> getDetailById(Long id) {
+        AgreementDetailVo  agreementDetailVo =  leaseAgreementMapper.getDetailById(id);
+        return Result.ok(agreementDetailVo);
     }
 
 }

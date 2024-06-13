@@ -29,4 +29,7 @@
         where la.is_deleted = 0
           and la.phone=#{phone}
     </select>
+    <select id="getDetailById" resultType="com.cwnu.lease.web.app.vo.agreement.AgreementDetailVo">
+        select * from lease_agreement where id = #{id}
+    </select>
 </mapper>

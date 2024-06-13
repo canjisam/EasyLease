@@ -2,8 +2,10 @@ package com.cwnu.lease.web.app.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.cwnu.lease.model.entity.LeaseAgreement;
+import com.cwnu.lease.web.app.vo.agreement.AgreementDetailVo;
 import com.cwnu.lease.web.app.vo.agreement.AgreementItemVo;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -17,6 +19,9 @@ import java.util.List;
 public interface LeaseAgreementMapper extends BaseMapper<LeaseAgreement> {
 
     List<AgreementItemVo> listItemByPhone(String phone);
+
+
+    AgreementDetailVo getDetailById(Long id);
 }
 
 
