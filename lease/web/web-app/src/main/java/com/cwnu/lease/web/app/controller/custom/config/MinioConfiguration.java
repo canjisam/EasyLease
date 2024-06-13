@@ -1,4 +1,4 @@
-package com.cwnu.lease.web.app.custom.config;
+package com.cwnu.lease.web.app.controller.custom.config;
 
 import com.cwnu.lease.common.minio.MinioProperties;
 import io.minio.MinioClient;
