@@ -1,4 +1,4 @@
-package com.cwnu.lease.web.app.custom.interceptor;
+package com.cwnu.lease.web.app.controller.custom.interceptor;
 
 import com.cwnu.lease.common.login.LoginUser;
 import com.cwnu.lease.common.login.LoginUserHolder;

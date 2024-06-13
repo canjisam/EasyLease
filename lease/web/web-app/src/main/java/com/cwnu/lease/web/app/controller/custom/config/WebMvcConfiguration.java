@@ -1,6 +1,6 @@
-package com.cwnu.lease.web.app.custom.config;
+package com.cwnu.lease.web.app.controller.custom.config;
 
-import com.cwnu.lease.web.app.custom.interceptor.AuthenticationInterceptor;
+import com.cwnu.lease.web.app.controller.custom.interceptor.AuthenticationInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;

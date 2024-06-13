@@ -9,5 +9,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
 * @createDate 2024-06-04 15:48:00
 */
 public interface BrowsingHistoryService extends IService<BrowsingHistory> {
-
+    void saveHistory(Long userId, Long roomId);
 }

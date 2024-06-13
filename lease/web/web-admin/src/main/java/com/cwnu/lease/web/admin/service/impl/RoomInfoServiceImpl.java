@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.cwnu.lease.common.login.LoginUserHolder;
 import com.cwnu.lease.model.entity.*;
 import com.cwnu.lease.model.enums.ItemType;
 import com.cwnu.lease.web.admin.mapper.*;
@@ -62,6 +63,8 @@ public class RoomInfoServiceImpl extends ServiceImpl<RoomInfoMapper, RoomInfo> i
     private LeaseTermMapper leaseTermMapper;
     @Autowired
     private PaymentTypeMapper paymentTypeMapper;
+    @Autowired
+    private BrowsingHistoryService browsingHistoryService;
     @Override
     public void saveOrUpdateRoom(RoomSubmitVo roomSubmitVo) {
         boolean isUpdate = roomSubmitVo.getId() != null;
@@ -205,6 +208,8 @@ public class RoomInfoServiceImpl extends ServiceImpl<RoomInfoMapper, RoomInfo> i
         adminRoomDetailVo.setLabelInfoList(labelInfoList);
         adminRoomDetailVo.setPaymentTypeList(paymentTypeList);
         adminRoomDetailVo.setLeaseTermList(leaseTermList);
+
+        browsingHistoryService.saveHistory(LoginUserHolder.get().getUserId(), roomInfo.getId());
         return adminRoomDetailVo;
     }
 
