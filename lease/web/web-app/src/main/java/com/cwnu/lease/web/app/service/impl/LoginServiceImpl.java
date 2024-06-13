@@ -63,11 +63,6 @@ public class LoginServiceImpl implements LoginService {
         redisTemplate.opsForValue().set(key, code, RedisConstant.APP_LOGIN_CODE_TTL_SEC, TimeUnit.SECONDS);
     }
 
-    @Override
-    public UserInfoVo getUserInfoId(Long id) {
-        return null;
-    }
-
     /**
      * 用户登录方法。
      * 通过手机号和验证码进行登录验证。
@@ -78,7 +73,7 @@ public class LoginServiceImpl implements LoginService {
      */
     @Override
     public String login(LoginVo loginVo) {
-        //1.判断手机号码和验证码是否为空
+        // 验证手机号是否为空
         if (loginVo.getPhone() == null) {
             throw new LeaseException(ResultCodeEnum.APP_LOGIN_PHONE_EMPTY);
         }
@@ -88,7 +83,6 @@ public class LoginServiceImpl implements LoginService {
             throw new LeaseException(ResultCodeEnum.APP_LOGIN_CODE_EMPTY);
         }
 
-        //2.校验验证码
         // 生成Redis中的键名，用于存储和查找验证码
         String key = RedisConstant.APP_LOGIN_PREFIX + loginVo.getPhone();
         // 从Redis中获取存储的验证码
@@ -103,14 +97,12 @@ public class LoginServiceImpl implements LoginService {
             throw new LeaseException(ResultCodeEnum.APP_LOGIN_CODE_ERROR);
         }
 
-
-        //3.判断用户是否存在,不存在则注册（创建用户）
         LambdaQueryWrapper<UserInfo> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(UserInfo::getPhone, loginVo.getPhone());
         UserInfo userInfo = userInfoMapper.selectOne(queryWrapper);
 
         if (userInfo==null){
-            //注册
+            //注册4
             userInfo = new UserInfo();
             userInfo.setPhone(loginVo.getPhone());
             userInfo.setStatus(BaseStatus.ENABLE);
@@ -122,13 +114,6 @@ public class LoginServiceImpl implements LoginService {
                 throw new LeaseException(ResultCodeEnum.APP_ACCOUNT_DISABLED_ERROR);
             }
         }
-
-        //4.判断用户是否被禁
-        if (userInfo.getStatus().equals(BaseStatus.DISABLE)) {
-            throw new LeaseException(ResultCodeEnum.APP_ACCOUNT_DISABLED_ERROR);
-        }
-
-
 
         // 登录验证成功，返回空字符串
         return JwtUtil.createToken(userInfo.getId(), userInfo.getPhone());

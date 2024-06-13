@@ -37,9 +37,6 @@ public class LoginController {
     @GetMapping("info")
     @Operation(summary = "获取登录用户信息")
     public Result<UserInfoVo> info() {
-
-        UserInfoVo infoVo =service.getLoginUserById(LoginUserHolder.get().getUserId());
-
         Long userId = LoginUserHolder.get().getUserId();
 
         UserInfoVo info = service.getLoginUserById(userId);
