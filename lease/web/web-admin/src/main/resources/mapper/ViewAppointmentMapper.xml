@@ -11,6 +11,9 @@
             <result property="phone" column="ai_phone"/>
         </association>
     </resultMap>
+    <update id="updateStatusById">
+        update view_appointment set appointment_status = #{status} where id = #{id}
+    </update>
     <select id="pageAppointment" resultMap="AppointmentVoMap">
         select
         va.id,

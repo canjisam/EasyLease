@@ -21,7 +21,7 @@ import org.apache.ibatis.annotations.Update;
 public interface ViewAppointmentMapper extends BaseMapper<ViewAppointment> {
 
     IPage<AppointmentVo> pageAppointment(Page<AppointmentVo> page, AppointmentQueryVo queryVo);
-    @Update("update view_appointment set appointment_status = #{status} where id = #{id}")
+
     int updateStatusById(Long id, AppointmentStatus status);
 }
 

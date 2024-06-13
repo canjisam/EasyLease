@@ -36,7 +36,6 @@ public class ViewAppointmentController {
     @Operation(summary = "根据id更新预约状态")
     @PostMapping("updateStatusById")
     public Result updateStatusById(@RequestParam Long id, @RequestParam AppointmentStatus status) {
-
         return service.updateStatusById(id,status);
     }
 
