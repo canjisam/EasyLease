@@ -13,7 +13,6 @@ import com.cwnu.lease.web.app.service.LoginService;
 import com.cwnu.lease.web.app.service.SmsService;
 import com.cwnu.lease.web.app.vo.user.LoginVo;
 import com.cwnu.lease.web.app.vo.user.UserInfoVo;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
@@ -58,7 +57,7 @@ public class LoginServiceImpl implements LoginService {
         }
 
         // 调用短信服务发送验证码
-        smsService.sendCode(phone, code);
+//        smsService.sendCode(phone, code);
         // 将验证码存储到Redis中，设置过期时间
         redisTemplate.opsForValue().set(key, code, RedisConstant.APP_LOGIN_CODE_TTL_SEC, TimeUnit.SECONDS);
     }
