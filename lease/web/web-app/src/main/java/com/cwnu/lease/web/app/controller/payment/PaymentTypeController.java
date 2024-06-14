@@ -30,7 +30,7 @@ public class PaymentTypeController {
     }
 
     @Operation(summary = "获取全部支付方式列表")
-    @GetMapping("lixst")
+    @GetMapping("list")
     public Result<List<PaymentType>> list() {
         List<PaymentType> list = service.list();
         return Result.ok(list);
