@@ -33,6 +33,7 @@ public class BaseEntity {
      */
     @Schema(description = "创建时间")
     @JsonIgnore
+    @TableField(value = "create_time")
     private Date createTime;
 
     /**
@@ -42,6 +43,7 @@ public class BaseEntity {
      */
     @Schema(description = "更新时间")
     @JsonIgnore
+    @TableField(value = "update_time")
     private Date updateTime;
 
     /**
