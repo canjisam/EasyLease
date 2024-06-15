@@ -16,4 +16,32 @@
                      where is_deleted = 0
                        and apartment_id = #{id})
     </select>
+
+
+   <!-- <select id="selectListByRoomId" resultType="com.cwnu.lease.model.entity.FacilityInfo">
+        select id,
+               roomnumber,
+               rent,
+               apartment_id,
+               is_release
+        from room_info
+        where is_deleted = 0
+          and id in (select room_id
+                     from room_info
+                     where is_deleted = 0
+                       and apartment_id = #{id})
+    </select>-->
+    <select id="selectListByRoomId" resultType="com.cwnu.lease.model.entity.FacilityInfo">
+        select id,
+               type,
+               name,
+               icon
+        from facility_info
+        where is_deleted = 0
+          and id in
+              (select facility_id
+               from room_facility
+               where is_deleted = 0
+                 and room_id = #{id})
+    </select>
 </mapper>
