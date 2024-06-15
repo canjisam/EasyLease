@@ -16,7 +16,7 @@ spring:
       pool-name: SPHHikariPool # 连接池名称
   jackson:
     time-zone: GMT+8
-
+    date-format: yyyy-MM-dd HH:mm:ss
 
   data:
     # Redis配置
