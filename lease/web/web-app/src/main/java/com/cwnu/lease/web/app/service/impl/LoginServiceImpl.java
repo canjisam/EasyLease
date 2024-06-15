@@ -51,13 +51,13 @@ public class LoginServiceImpl implements LoginService {
             // 如果键存在，获取该键的剩余过期时间（以秒为单位）
             Long ttl = redisTemplate.getExpire(key, TimeUnit.SECONDS);
             // 如果当前时间与上次发送验证码的时间间隔小于设定的最小发送间隔，则抛出异常
-//            if (RedisConstant.APP_LOGIN_CODE_RESEND_TIME_SEC - ttl < RedisConstant.APP_LOGIN_CODE_RESEND_TIME_SEC) {
-//                throw new LeaseException(ResultCodeEnum.APP_SEND_SMS_TOO_OFTEN);
-//            }
+            if (RedisConstant.APP_LOGIN_CODE_RESEND_TIME_SEC - ttl < RedisConstant.APP_LOGIN_CODE_RESEND_TIME_SEC) {
+                throw new LeaseException(ResultCodeEnum.APP_SEND_SMS_TOO_OFTEN);
+            }
         }
 
         // 调用短信服务发送验证码
-//        smsService.sendCode(phone, code);
+        smsService.sendCode(phone, code);
         // 将验证码存储到Redis中，设置过期时间
         redisTemplate.opsForValue().set(key, code, RedisConstant.APP_LOGIN_CODE_TTL_SEC, TimeUnit.SECONDS);
     }
