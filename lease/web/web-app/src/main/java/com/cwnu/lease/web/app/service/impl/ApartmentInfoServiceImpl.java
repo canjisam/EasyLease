@@ -26,9 +26,27 @@ import java.util.List;
 @Service
 public class ApartmentInfoServiceImpl extends ServiceImpl<ApartmentInfoMapper, ApartmentInfo>
         implements ApartmentInfoService {
+
+
+    //xqs
     @Override
-    public ApartmentItemVo selectApartmentItemVoById(Long apartmentId) {
-        return null;
+    public ApartmentItemVo selectApartmentItemVoById(Long id) {
+
+        ApartmentInfo apartmentInfo = apartmentInfoMapper.selectById(id);
+
+        List<LabelInfo> labelInfoList = labelInfoMapper.selectListByApartmentId(id);
+
+        List<GraphVo> graphVoList = graphInfoMapper.selectListByItemTypeAndId(ItemType.APARTMENT, id);
+
+        BigDecimal minRent = roomInfoMapper.selectMinRentByApartmentId(id);
+
+        ApartmentItemVo apartmentItemVo = new ApartmentItemVo();
+        BeanUtils.copyProperties(apartmentInfo, apartmentItemVo);
+
+        apartmentItemVo.setGraphVoList(graphVoList);
+        apartmentItemVo.setLabelInfoList(labelInfoList);
+        apartmentItemVo.setMinRent(minRent);
+        return apartmentItemVo;
     }
 
 //    @Override
@@ -46,6 +64,8 @@ public class ApartmentInfoServiceImpl extends ServiceImpl<ApartmentInfoMapper, A
     private LabelInfoMapper labelInfoMapper;
     @Autowired
     private RoomInfoMapper roomInfoMapper;
+
+
 
     @Override
     public ApartmentDetailVo getDetailById(Long apartmentid) {
