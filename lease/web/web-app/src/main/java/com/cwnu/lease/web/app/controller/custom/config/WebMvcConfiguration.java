@@ -25,12 +25,10 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
      *
      * @param registry InterceptorRegistry，用于注册拦截器。
      */
-//    暂时关闭认证拦截器方便调试
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(this.authenticationInterceptor)
                 .addPathPatterns("/app/**")
                 .excludePathPatterns("/app/login/**");
     }
-
 }

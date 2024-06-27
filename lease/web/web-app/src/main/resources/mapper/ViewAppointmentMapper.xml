@@ -9,7 +9,8 @@
         <collection property="graphVoList" ofType="com.cwnu.lease.web.app.vo.graph.GraphVo" autoMapping="true"/>
     </resultMap>
     <select id="listItemByUserId" resultType="com.cwnu.lease.web.app.vo.appointment.AppointmentItemVo">
-        select va.id,
+        select
+               va.id,
                va.appointment_time,
                va.appointment_status,
                ai.name apartment_name,

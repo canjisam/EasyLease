@@ -5,7 +5,6 @@ import com.cwnu.lease.common.login.LoginUserHolder;
 import com.cwnu.lease.common.result.Result;
 import com.cwnu.lease.model.entity.LeaseAgreement;
 import com.cwnu.lease.model.entity.UserInfo;
-import com.cwnu.lease.model.enums.LeaseStatus;
 import com.cwnu.lease.web.app.service.LeaseAgreementService;
 import com.cwnu.lease.web.app.service.UserInfoService;
 import com.cwnu.lease.web.app.vo.agreement.AgreementDetailVo;
@@ -39,10 +38,12 @@ public class LeaseAgreementController {
         List<AgreementItemVo> list = service.listItemByPhone(phone);
         return Result.ok(list);
     }
+
     @Operation(summary = "根据id获取租约详细信息")
     @GetMapping("getDetailById")
     public Result<AgreementDetailVo> getDetailById(@RequestParam Long id) {
-        return service.getDetailById(id);
+        AgreementDetailVo result =  service.getDetailById(id);
+        return Result.ok(result);
     }
 
     @Operation(summary = "根据id更新租约状态", description = "用于确认租约和提前退租")
@@ -55,17 +56,11 @@ public class LeaseAgreementController {
         return Result.ok();
     }
 
-    @Operation(summary = "保存租约", description = "用于续约")
-    @PostMapping("save")
-    public Result save1(@RequestBody LeaseAgreement leaseAgreement) {
-        service.save(leaseAgreement);
+    @Operation(summary = "保存或更新租约", description = "用于续约")
+    @PostMapping("saveOrUpdate")
+    public Result saveOrUpdate(@RequestBody LeaseAgreement leaseAgreement) {
+        service.saveOrUpdate(leaseAgreement);
         return Result.ok();
     }
 
-    @Operation(summary = "更新租约", description = "用于续约")
-    @PostMapping("Update")
-    public Result Update1(@RequestBody LeaseAgreement leaseAgreement) {
-        service.updateById(leaseAgreement);
-        return Result.ok();
-    }
 }

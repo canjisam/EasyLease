@@ -4,6 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cwnu.lease.web.app.mapper.LeaseAgreementMapper">
 
+
     <resultMap id="AgreementItemVoMap" type="com.cwnu.lease.web.app.vo.agreement.AgreementItemVo" autoMapping="true">
         <id property="id" column="id"/>
         <collection property="roomGraphVoList" ofType="com.cwnu.lease.web.app.vo.graph.GraphVo" autoMapping="true"/>

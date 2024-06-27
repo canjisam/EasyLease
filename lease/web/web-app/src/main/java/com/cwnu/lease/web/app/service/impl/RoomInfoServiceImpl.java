@@ -3,10 +3,12 @@ package com.cwnu.lease.web.app.service.impl;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.cwnu.lease.common.login.LoginUserHolder;
 import com.cwnu.lease.model.entity.*;
 import com.cwnu.lease.model.enums.ItemType;
 import com.cwnu.lease.web.app.mapper.*;
 import com.cwnu.lease.web.app.service.ApartmentInfoService;
+import com.cwnu.lease.web.app.service.BrowsingHistoryService;
 import com.cwnu.lease.web.app.service.RoomInfoService;
 import com.cwnu.lease.web.app.vo.apartment.ApartmentItemVo;
 import com.cwnu.lease.web.app.vo.attr.AttrValueVo;
@@ -59,6 +61,8 @@ public class RoomInfoServiceImpl extends ServiceImpl<RoomInfoMapper, RoomInfo>
     @Autowired
     private ApartmentInfoService apartmentInfoService;
 
+    @Autowired
+    private BrowsingHistoryService browsingHistoryService;
     @Override
     public IPage<RoomItemVo> pageItem(Page<RoomItemVo> page, RoomQueryVo queryVo) {
         return roomInfoMapper.pageItem(page, queryVo);
@@ -99,6 +103,8 @@ public class RoomInfoServiceImpl extends ServiceImpl<RoomInfoMapper, RoomInfo>
         roomDetailVo.setPaymentTypeList(paymentTypeList);
         roomDetailVo.setFeeValueVoList(feeValueVoList);
         roomDetailVo.setLeaseTermList(leaseTermList);
+
+        browsingHistoryService.saveHistory(LoginUserHolder.get().getUserId(), roomInfo.getId());
 
         return roomDetailVo;
     }

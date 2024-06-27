@@ -1,5 +1,6 @@
 package com.cwnu.lease.web.app.controller.leasaterm;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.cwnu.lease.common.result.Result;
 import com.cwnu.lease.model.entity.LeaseTerm;
 import io.swagger.v3.oas.annotations.Operation;
@@ -19,6 +20,8 @@ public class LeaseTermController {
     @GetMapping("listByRoomId")
     @Operation(summary = "根据房间id获取可选获取租期列表")
     public Result<List<LeaseTerm>> list(@RequestParam Long id) {
+        LambdaQueryWrapper<LeaseTerm> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(LeaseTerm::getId, id);
         return Result.ok();
     }
 }

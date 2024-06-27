@@ -1,8 +1,7 @@
 package com.cwnu.lease.web.app.service;
 
-import com.cwnu.lease.common.result.Result;
-import com.cwnu.lease.model.entity.LeaseAgreement;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.cwnu.lease.model.entity.LeaseAgreement;
 import com.cwnu.lease.web.app.vo.agreement.AgreementDetailVo;
 import com.cwnu.lease.web.app.vo.agreement.AgreementItemVo;
 
@@ -16,5 +15,5 @@ import java.util.List;
 public interface LeaseAgreementService extends IService<LeaseAgreement> {
     List<AgreementItemVo> listItemByPhone(String phone);
 
-    Result<AgreementDetailVo> getDetailById(Long id);
+    AgreementDetailVo getDetailById(Long id);
 }

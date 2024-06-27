@@ -57,7 +57,7 @@ public class LoginServiceImpl implements LoginService {
         }
 
         // 调用短信服务发送验证码
-        smsService.sendCode(phone, code);
+//        smsService.sendCode(phone, code);
         // 将验证码存储到Redis中，设置过期时间
         redisTemplate.opsForValue().set(key, code, RedisConstant.APP_LOGIN_CODE_TTL_SEC, TimeUnit.SECONDS);
     }
@@ -122,6 +122,9 @@ public class LoginServiceImpl implements LoginService {
     public UserInfoVo getLoginUserById(Long userId) {
         UserInfo userInfo = userInfoMapper.getLoginUserById(userId);
         UserInfoVo userInfoVo = new UserInfoVo();
+        if (userInfo.getNickname() == null){
+            throw  new LeaseException(ResultCodeEnum.ADMIN_LOGIN_AUTH);
+        }
         userInfoVo.setNickname(userInfo.getNickname());
         userInfoVo.setAvatarUrl(userInfo.getAvatarUrl());
         return userInfoVo;
