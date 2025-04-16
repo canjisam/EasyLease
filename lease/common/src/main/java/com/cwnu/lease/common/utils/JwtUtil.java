@@ -65,9 +65,9 @@ public class JwtUtil {
                     .parseClaimsJws(token);
             return claimsJws.getBody();
         } catch (ExpiredJwtException e) {
-            throw new LeaseException(ResultCodeEnum.TOKEN_EXPIRED);
+            throw new LeaseException(ResultCodeEnum.TOKEN_EXPIRED); // token过期异常处理
         } catch (JwtException e) {
-            throw new LeaseException(ResultCodeEnum.TOKEN_INVALID);
+            throw new LeaseException(ResultCodeEnum.TOKEN_INVALID); // token无效异常处理
         }
     }
 

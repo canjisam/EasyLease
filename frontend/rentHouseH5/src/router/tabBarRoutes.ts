@@ -37,7 +37,8 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("@/views/myRoom/myRoom.vue"),
     meta: {
       title: "我的房间",
-      icon: "home-o"
+      icon: "home-o",
+      requiresAuth: true // Added requiresAuth flag
     }
   },
   {
@@ -46,7 +47,8 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("@/views/message/message.vue"),
     meta: {
       title: "消息",
-      icon: "comment-o"
+      icon: "comment-o",
+      requiresAuth: true // Added requiresAuth flag
     }
   },
   {
@@ -56,7 +58,8 @@ const routes: Array<RouteRecordRaw> = [
     meta: {
       title: "个人中心",
       icon: "user-o",
-      isShowNavBar: true
+      isShowNavBar: true,
+      requiresAuth: true // Added requiresAuth flag
     }
   }
 ];

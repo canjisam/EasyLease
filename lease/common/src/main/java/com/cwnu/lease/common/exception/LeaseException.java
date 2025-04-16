@@ -32,8 +32,8 @@ public class LeaseException extends RuntimeException{
      * @param resultCodeEnum 业务结果代码枚举，包含状态码和错误消息。
      */
     public LeaseException(ResultCodeEnum resultCodeEnum) {
-        super(resultCodeEnum.getMessage());
-        this.code = resultCodeEnum.getCode();
+        super(resultCodeEnum.getMessage()); // 通过枚举获取错误信息
+        this.code = resultCodeEnum.getCode(); // 通过枚举获取状态码
     }
 
     /**

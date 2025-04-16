@@ -3,6 +3,8 @@
     v-if="isShowNavBar"
     fixed
     placeholder
+    :title="route.meta.title as string"
+    class="shadow-sm"
     @click-right="onClickRight"
   >
     <template #right>

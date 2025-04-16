@@ -84,6 +84,7 @@ import { onMounted, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { getSmsCode } from "@/api/user";
 import type { CountDownInstance, FormInstance } from "vant";
+import { showToast } from 'vant'; // 导入 showToast
 import { useUserStore } from "@/store/modules/user";
 import LoadingButton from "@/components/LoadingButton/LoadingButton.vue";
 const route = useRoute();
@@ -91,7 +92,7 @@ const router = useRouter();
 const userStore = useUserStore();
 // 登录信息
 const loginInfo = ref({
-  phone: "13888888888",
+  phone: "13999999998",
   code: "123456"
 });
 // 表单实例
@@ -143,6 +144,10 @@ const onSubmitHandle = async () => {
 onMounted(() => {
   console.log("route", route);
   console.log("router-onMounted", router);
+  // 检查是否需要显示登录提示
+  if (route.query.showLoginPrompt === 'true') {
+    showToast('请先登录以访问此页面');
+  }
 });
 </script>
 
