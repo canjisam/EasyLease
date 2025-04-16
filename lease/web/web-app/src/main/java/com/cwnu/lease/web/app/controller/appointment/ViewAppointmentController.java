@@ -34,7 +34,6 @@ public class ViewAppointmentController {
     @GetMapping("listItem")
     public Result<List<AppointmentItemVo>> listItem() {
         List<AppointmentItemVo> result = service.listItemByUserId(LoginUserHolder.get().getUserId());
-        System.out.println("");
         return Result.ok(result);
     }
 

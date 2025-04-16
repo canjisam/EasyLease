@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/app/")
 public class LoginController {
 
-
-
     @Autowired
     private LoginService service;
     @GetMapping("login/getCode")
