@@ -3,6 +3,9 @@ package com.cwnu.lease.web.admin.vo.apartment;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
+/**
+ * @author Administrator
+ */
 @Data
 @Schema(description = "公寓查询实体")
 public class ApartmentQueryVo {
@@ -15,4 +18,5 @@ public class ApartmentQueryVo {
 
     @Schema(description = "区域id")
     private Long districtId;
+
 }

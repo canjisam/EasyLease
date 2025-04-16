@@ -9,6 +9,9 @@ import com.cwnu.lease.common.result.Result;
 import com.cwnu.lease.model.entity.ApartmentInfo;
 import com.cwnu.lease.model.enums.ReleaseStatus;
 import com.cwnu.lease.web.admin.service.ApartmentInfoService;
+import com.cwnu.lease.web.admin.service.CityInfoService;
+import com.cwnu.lease.web.admin.service.DistrictInfoService;
+import com.cwnu.lease.web.admin.service.ProvinceInfoService;
 import com.cwnu.lease.web.admin.vo.apartment.ApartmentDetailVo;
 import com.cwnu.lease.web.admin.vo.apartment.ApartmentItemVo;
 import com.cwnu.lease.web.admin.vo.apartment.ApartmentQueryVo;
@@ -32,12 +35,20 @@ import java.util.List;
 public class ApartmentController {
 
     @Autowired
-    private ApartmentInfoService service;
+    private ApartmentInfoService apartmentInfoService;
 
+    @Autowired
+    private ProvinceInfoService provinceInfoService;
+
+    @Autowired
+    private CityInfoService cityInfoService;
+
+    @Autowired
+    private DistrictInfoService districtInfoService;
     @Operation(summary = "保存或更新公寓信息")
     @PostMapping("saveOrUpdate")
     public Result saveOrUpdate(@RequestBody ApartmentSubmitVo apartmentSubmitVo) {
-        service.saveOrUpdateApartment(apartmentSubmitVo);
+        apartmentInfoService.saveOrUpdateApartment(apartmentSubmitVo);
         return Result.ok();
     }
 
@@ -45,21 +56,30 @@ public class ApartmentController {
     @GetMapping("pageItem")
     public Result<IPage<ApartmentItemVo>> pageItem(@RequestParam long current, @RequestParam long size, ApartmentQueryVo queryVo) {
         Page<ApartmentItemVo> page = new Page<>(current,size);
-        IPage<ApartmentItemVo> result = service.pageItem(page,queryVo);
+        IPage<ApartmentItemVo> result = apartmentInfoService.pageItem(page,queryVo);
+        //
+        result.getRecords().forEach(item -> {
+            String province = provinceInfoService.getById(item.getProvinceId()).getName();
+            String city = cityInfoService.getById(item.getCityId()).getName();
+            String district = districtInfoService.getById(item.getDistrictId()).getName();
+            item.setProvinceName(province);
+            item.setCityName(city);
+            item.setDistrictName(district);
+        });
         return Result.ok(result);
     }
 
     @Operation(summary = "根据ID获取公寓详细信息")
     @GetMapping("getDetailById")
     public Result<ApartmentDetailVo> getDetailById(@RequestParam Long id) {
-        ApartmentDetailVo result = service.getApartmentDetailById(id);
+        ApartmentDetailVo result = apartmentInfoService.getApartmentDetailById(id);
         return Result.ok(result);
     }
 
     @Operation(summary = "根据id删除公寓信息")
     @DeleteMapping("removeById")
     public Result removeById(@RequestParam Long id) {
-        service.removeApartmentById(id);
+        apartmentInfoService.removeApartmentById(id);
         return Result.ok();
     }
 
@@ -68,7 +88,7 @@ public class ApartmentController {
     public Result updateReleaseStatusById(@RequestParam Long id, @RequestParam ReleaseStatus status) {
         LambdaUpdateWrapper<ApartmentInfo> updateWrapper = new LambdaUpdateWrapper<>();
         updateWrapper.eq(ApartmentInfo::getId, id).set(ApartmentInfo::getIsRelease, status);
-        service.update(updateWrapper);
+        apartmentInfoService.update(updateWrapper);
         return Result.ok();
     }
 
@@ -77,7 +97,7 @@ public class ApartmentController {
     public Result<List<ApartmentInfo>> listInfoByDistrictId(@RequestParam Long id) {
         LambdaQueryWrapper<ApartmentInfo> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(ApartmentInfo::getDistrictId, id);
-        List<ApartmentInfo> list = service.list(queryWrapper);
+        List<ApartmentInfo> list = apartmentInfoService.list(queryWrapper);
         return Result.ok(list);
     }
 }
