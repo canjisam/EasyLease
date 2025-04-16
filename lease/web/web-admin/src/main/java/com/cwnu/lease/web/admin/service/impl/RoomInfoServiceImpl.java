@@ -3,7 +3,9 @@ package com.cwnu.lease.web.admin.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.cwnu.lease.common.constant.RedisConstant;
 import com.cwnu.lease.model.entity.*;
 import com.cwnu.lease.model.enums.ItemType;
 import com.cwnu.lease.web.admin.mapper.*;
@@ -16,6 +18,7 @@ import com.cwnu.lease.web.admin.vo.room.RoomQueryVo;
 import com.cwnu.lease.web.admin.vo.room.RoomSubmitVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -33,7 +36,8 @@ import java.util.List;
 public class RoomInfoServiceImpl extends ServiceImpl<RoomInfoMapper, RoomInfo> implements RoomInfoService {
 
 
-
+    @Autowired
+    private RoomInfoMapper roomInfoMapper;
     @Autowired
     private GraphInfoService graphInfoService;
     @Autowired
@@ -46,8 +50,7 @@ public class RoomInfoServiceImpl extends ServiceImpl<RoomInfoMapper, RoomInfo> i
     private RoomPaymentTypeService roomPaymentTypeService;
     @Autowired
     private RoomLeaseTermService roomLeaseTermService;
-    @Autowired
-    private RoomInfoMapper roomInfoMapper;
+
     @Autowired
     private ApartmentInfoMapper apartmentInfoMapper;
     @Autowired
@@ -62,6 +65,14 @@ public class RoomInfoServiceImpl extends ServiceImpl<RoomInfoMapper, RoomInfo> i
     private LeaseTermMapper leaseTermMapper;
     @Autowired
     private PaymentTypeMapper paymentTypeMapper;
+
+    @Autowired
+    private RedisTemplate<String, Object> stringObjectRedisTemplate;
+
+    @Override
+    public IPage<RoomItemVo> pageRoomItemByQuery(IPage<RoomItemVo> page, RoomQueryVo queryVo) {
+        return roomInfoMapper.pageRoomItemByQuery(page, queryVo);
+    }
 
     @Override
     public void saveOrUpdateRoom(RoomSubmitVo roomSubmitVo) {
@@ -162,15 +173,10 @@ public class RoomInfoServiceImpl extends ServiceImpl<RoomInfoMapper, RoomInfo> i
     }
 
 
-    @Override
-    public IPage<RoomItemVo> pageRoomItemByQuery(IPage<RoomItemVo> page, RoomQueryVo queryVo) {
-        return roomInfoMapper.pageRoomItemByQuery(page, queryVo);
-    }
 
 
     @Override
     public RoomDetailVo getRoomDetailById(Long id) {
-
         //1.查询RoomInfo
         RoomInfo roomInfo = roomInfoMapper.selectById(id);
 
@@ -178,7 +184,7 @@ public class RoomInfoServiceImpl extends ServiceImpl<RoomInfoMapper, RoomInfo> i
         ApartmentInfo apartmentInfo = apartmentInfoMapper.selectById(roomInfo.getApartmentId());
 
         //3.查询graphInfoList
-        List<GraphVo> graphVoList = graphInfoMapper.selectListByItemTypeAndId(ItemType.APARTMENT, id);
+        List<GraphVo> graphVoList = graphInfoMapper.selectListByItemTypeAndId(ItemType.ROOM, id);
 
         //4.查询attrValueList
         List<AttrValueVo> attrvalueVoList = attrValueMapper.selectListByRoomId(id);
@@ -207,7 +213,7 @@ public class RoomInfoServiceImpl extends ServiceImpl<RoomInfoMapper, RoomInfo> i
         adminRoomDetailVo.setPaymentTypeList(paymentTypeList);
         adminRoomDetailVo.setLeaseTermList(leaseTermList);
 
-         return adminRoomDetailVo;
+        return adminRoomDetailVo;
     }
 
     @Override
@@ -245,5 +251,9 @@ public class RoomInfoServiceImpl extends ServiceImpl<RoomInfoMapper, RoomInfo> i
         LambdaQueryWrapper<RoomLeaseTerm> termQueryWrapper = new LambdaQueryWrapper<>();
         termQueryWrapper.eq(RoomLeaseTerm::getRoomId, id);
         roomLeaseTermService.remove(termQueryWrapper);
+
+        //8.删除缓存
+        String key = RedisConstant.APP_ROOM_PREFIX + id;
+        stringObjectRedisTemplate.delete(key);
     }
 }

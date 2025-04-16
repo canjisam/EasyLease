@@ -7,6 +7,9 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cwnu.lease.common.result.Result;
 import com.cwnu.lease.model.entity.RoomInfo;
 import com.cwnu.lease.model.enums.ReleaseStatus;
+import com.cwnu.lease.web.admin.service.CityInfoService;
+import com.cwnu.lease.web.admin.service.DistrictInfoService;
+import com.cwnu.lease.web.admin.service.ProvinceInfoService;
 import com.cwnu.lease.web.admin.service.RoomInfoService;
 import com.cwnu.lease.web.admin.vo.room.RoomDetailVo;
 import com.cwnu.lease.web.admin.vo.room.RoomItemVo;
@@ -30,6 +33,15 @@ public class RoomController {
 
     @Autowired
     private RoomInfoService service;
+
+    @Autowired
+    private ProvinceInfoService provinceInfoService;
+
+    @Autowired
+    private CityInfoService cityInfoService;
+
+    @Autowired
+    private DistrictInfoService districtInfoService;
     @Operation(summary = "保存或更新房间信息")
     @PostMapping("saveOrUpdate")
     public Result saveOrUpdate(@RequestBody RoomSubmitVo roomSubmitVo) {
@@ -41,6 +53,17 @@ public class RoomController {
     public Result<IPage<RoomItemVo>> pageItem(@RequestParam long current, @RequestParam long size, RoomQueryVo queryVo) {
         Page<RoomItemVo> page = new Page<>(current, size);
         IPage<RoomItemVo> result = service.pageRoomItemByQuery(page, queryVo);
+        result.getRecords().forEach(
+                item -> {
+                    String province = provinceInfoService.getById(item.getApartmentInfo().getProvinceId()).getName();
+                    String city = cityInfoService.getById(item.getApartmentInfo().getCityId()).getName();
+                    String district = districtInfoService.getById(item.getApartmentInfo().getDistrictId()).getName();
+                    item.getApartmentInfo().setProvinceName(province);
+                    item.getApartmentInfo().setCityName(city);
+                    item.getApartmentInfo().setDistrictName(district);
+                }
+        );
+        System.out.println("");
         return Result.ok(result);
     }
 

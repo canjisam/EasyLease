@@ -26,9 +26,9 @@ import java.util.List;
 /**
  * 公寓信息管理的控制
  *包括查询、创建、更新、修改和删除操作
+ * @author xqs jisam
  */
 
-//xqs
 @Tag(name = "公寓信息管理")
 @RestController
 @RequestMapping("/admin/apartment")
@@ -57,7 +57,6 @@ public class ApartmentController {
     public Result<IPage<ApartmentItemVo>> pageItem(@RequestParam long current, @RequestParam long size, ApartmentQueryVo queryVo) {
         Page<ApartmentItemVo> page = new Page<>(current,size);
         IPage<ApartmentItemVo> result = apartmentInfoService.pageItem(page,queryVo);
-        //
         result.getRecords().forEach(item -> {
             String province = provinceInfoService.getById(item.getProvinceId()).getName();
             String city = cityInfoService.getById(item.getCityId()).getName();
