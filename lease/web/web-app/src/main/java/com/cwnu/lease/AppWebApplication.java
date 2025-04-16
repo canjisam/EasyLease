@@ -1,4 +1,4 @@
-package com.cwnu.lease.web.app;
+package com.cwnu.lease;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

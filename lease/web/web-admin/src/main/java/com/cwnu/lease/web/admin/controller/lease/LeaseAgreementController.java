@@ -6,7 +6,10 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cwnu.lease.common.result.Result;
 import com.cwnu.lease.model.entity.LeaseAgreement;
 import com.cwnu.lease.model.enums.LeaseStatus;
+import com.cwnu.lease.web.admin.service.CityInfoService;
+import com.cwnu.lease.web.admin.service.DistrictInfoService;
 import com.cwnu.lease.web.admin.service.LeaseAgreementService;
+import com.cwnu.lease.web.admin.service.ProvinceInfoService;
 import com.cwnu.lease.web.admin.vo.agreement.AgreementQueryVo;
 import com.cwnu.lease.web.admin.vo.agreement.AgreementVo;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -24,6 +27,15 @@ public class LeaseAgreementController {
     @Autowired
     private LeaseAgreementService service;
 
+    @Autowired
+    private ProvinceInfoService provinceInfoService;
+
+    @Autowired
+    private CityInfoService cityInfoService;
+
+    @Autowired
+    private DistrictInfoService districtInfoService;
+
     @Operation(summary = "保存或修改租约信息")
     @PostMapping("saveOrUpdate")
     public Result saveOrUpdate(@RequestBody LeaseAgreement leaseAgreement) {
@@ -36,6 +48,14 @@ public class LeaseAgreementController {
     public Result<IPage<AgreementVo>> page(@RequestParam long current, @RequestParam long size, AgreementQueryVo queryVo) {
         IPage<AgreementVo> page = new Page<>(current, size);
         IPage<AgreementVo> result = service.pageAgreement(page, queryVo);
+        result.getRecords().forEach(item -> {
+            String province = provinceInfoService.getById(item.getApartmentInfo().getProvinceId()).getName();
+            String city = cityInfoService.getById(item.getApartmentInfo().getCityId()).getName();
+            String district = districtInfoService.getById(item.getApartmentInfo().getDistrictId()).getName();
+            item.getApartmentInfo().setProvinceName(province);
+            item.getApartmentInfo().setCityName(city);
+            item.getApartmentInfo().setDistrictName(district);
+        });
         return Result.ok(result);
     }
 

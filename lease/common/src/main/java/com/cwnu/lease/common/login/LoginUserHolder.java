@@ -1,5 +1,8 @@
 package com.cwnu.lease.common.login;
 
+/**
+ * @author Administrator
+ */
 public class LoginUserHolder {
     private static final ThreadLocal<LoginUser> THREAD_LOCAL = new ThreadLocal<>();
 
@@ -14,7 +17,4 @@ public class LoginUserHolder {
     public static void remove() {
         THREAD_LOCAL.remove();
     }
-
-
-
 }

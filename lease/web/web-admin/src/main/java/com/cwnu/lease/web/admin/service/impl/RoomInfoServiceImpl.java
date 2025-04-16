@@ -24,11 +24,8 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-
-//xqs
-
 /**
- * @author Jisam
+ * @author Jisam xqs
  * @description 针对表【room_info(房间信息表)】的数据库操作Service实现
  * @createDate 2024-06-04 15:48:00
  */

@@ -13,6 +13,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * @author Jisam
@@ -55,6 +56,7 @@ public class BrowsingHistoryServiceImpl extends ServiceImpl<BrowsingHistoryMappe
     @Async
     public void saveHistory(Long userId, Long roomId) {
 
+        System.out.println("保存浏览历史-" + Thread.currentThread().getName());
         // 构建查询条件，检查是否已存在相同的浏览记录
         LambdaQueryWrapper<BrowsingHistory> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(BrowsingHistory::getUserId, userId);
@@ -62,7 +64,7 @@ public class BrowsingHistoryServiceImpl extends ServiceImpl<BrowsingHistoryMappe
         BrowsingHistory browsingHistory = browsingHistoryMapper.selectOne(queryWrapper);
 
         // 如果浏览记录已存在，则更新浏览时间
-        if (browsingHistory != null) {
+        if (Objects.nonNull(browsingHistory)) {
             browsingHistory.setBrowseTime(new Date());
             browsingHistoryMapper.updateById(browsingHistory);
         } else {

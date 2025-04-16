@@ -4,7 +4,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 /**
- * @author Administrator
+ * @author jisam
  */
 @Data
 @Schema(description = "公寓查询实体")

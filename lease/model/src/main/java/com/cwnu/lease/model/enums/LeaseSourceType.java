@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 
 /**
- * @author Administrator
+ * @author jisam
  */
 
 public enum LeaseSourceType implements BaseEnum {

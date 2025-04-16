@@ -1,7 +1,7 @@
 package com.cwnu.lease.model.enums;
 
 /**
- * @author Administrator
+ * @author jisam
  */
 public interface BaseEnum {
 

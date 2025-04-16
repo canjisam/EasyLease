@@ -23,7 +23,7 @@ public class ViewAppointmentController {
     private ViewAppointmentService service;
 
     @Operation(summary = "保存或更新看房预约")
-    @PostMapping("/saveOrUpdate")
+    @PostMapping("saveOrUpdate")
     public Result saveOrUpdate(@RequestBody ViewAppointment viewAppointment) {
         viewAppointment.setUserId(LoginUserHolder.get().getUserId());
         service.saveOrUpdate(viewAppointment);
@@ -34,6 +34,7 @@ public class ViewAppointmentController {
     @GetMapping("listItem")
     public Result<List<AppointmentItemVo>> listItem() {
         List<AppointmentItemVo> result = service.listItemByUserId(LoginUserHolder.get().getUserId());
+        System.out.println("");
         return Result.ok(result);
     }
 

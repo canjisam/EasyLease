@@ -4,6 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
+/**
+ * @author Administrator
+ */
 @SpringBootApplication
 @EnableScheduling//通过定时任务定时检查租约是否到期
 public class AdminWebApplication {

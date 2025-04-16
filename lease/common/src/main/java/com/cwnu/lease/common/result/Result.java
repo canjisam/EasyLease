@@ -6,7 +6,7 @@ import lombok.Data;
  * 全局统一返回结果类，用于封装接口调用的返回数据和状态码。
  *
  * @param <T> 返回数据的泛型类型。
- * @author Jisam
+ * @author Jisam xqs
  */
 @Data
 public class Result<T> {
@@ -94,7 +94,6 @@ public class Result<T> {
 
 
 
-    //xqs
     public static <T> Result<T> fail(Integer code, String message) {
         Result<T> result = build(null);
         result.setCode(code);

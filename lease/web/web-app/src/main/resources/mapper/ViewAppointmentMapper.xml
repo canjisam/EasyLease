@@ -3,14 +3,13 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cwnu.lease.web.app.mapper.ViewAppointmentMapper">
-    <resultMap id="AppointmentItemVoMap" type="com.cwnu.lease.web.app.vo.appointment.AppointmentItemVo"
+    <resultMap id="AppointmentItemVo" type="com.cwnu.lease.web.app.vo.appointment.AppointmentItemVo"
                autoMapping="true">
         <id column="id" property="id"/>
         <collection property="graphVoList" ofType="com.cwnu.lease.web.app.vo.graph.GraphVo" autoMapping="true"/>
     </resultMap>
-    <select id="listItemByUserId" resultType="com.cwnu.lease.web.app.vo.appointment.AppointmentItemVo">
-        select
-               va.id,
+    <select id="listItemByUserId" resultMap="AppointmentItemVo">
+            select distinct va.id,
                va.appointment_time,
                va.appointment_status,
                ai.name apartment_name,
@@ -18,9 +17,9 @@
                gi.url
         from view_appointment va
                  left join apartment_info ai on va.apartment_id = ai.id and ai.is_deleted = 0
-                 left join graph_info gi on gi.item_type = 1 and gi.item_id = ai.id and gi.is_deleted = 0
+                 left join graph_info gi on ai.id = gi.item_id and gi.item_type = 1 and gi.is_deleted = 0
         where va.is_deleted = 0
           and va.user_id = #{userId}
-        order by va.create_time desc
+        order by va.appointment_time desc
     </select>
 </mapper>

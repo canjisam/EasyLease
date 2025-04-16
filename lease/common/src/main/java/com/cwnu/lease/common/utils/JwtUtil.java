@@ -19,13 +19,13 @@ public class JwtUtil {
     /**
      * 令牌过期时间，单位为毫秒，默认为1小时。
      */
-    private static long tokenExpiration = 365 * 24 * 60 * 60 * 1000L;
+    private static final long TOKEN_EXPIRATION = 365 * 24 * 60 * 60 * 1000L;
 
 
     /**
      * 用于令牌签名的密钥。
      */
-    private static SecretKey tokenSignKey = Keys.hmacShaKeyFor("M0PKKI6pYGVWWfDZw90a0lTpGYX1d4AQ".getBytes());
+    private static final SecretKey TOKEN_SIGN_KEY = Keys.hmacShaKeyFor("M0PKKI6pYGVWWfDZw90a0lTpGYX1d4AQ".getBytes());
 
     /**
      * 生成JWT令牌。
@@ -37,10 +37,10 @@ public class JwtUtil {
     public static String createToken(Long userId, String username) {
         String token = Jwts.builder()
                 .setSubject("USER_INFO")
-                .setExpiration(new Date(System.currentTimeMillis() + tokenExpiration))
+                .setExpiration(new Date(System.currentTimeMillis() + TOKEN_EXPIRATION))
                 .claim("userId", userId)
                 .claim("username", username)
-                .signWith(tokenSignKey, SignatureAlgorithm.HS256)
+                .signWith(TOKEN_SIGN_KEY, SignatureAlgorithm.HS256)
                 .compressWith(CompressionCodecs.GZIP)
                 .compact();
         return token;
@@ -60,7 +60,7 @@ public class JwtUtil {
 
         try {
             Jws<Claims> claimsJws = Jwts.parserBuilder()
-                    .setSigningKey(tokenSignKey)
+                    .setSigningKey(TOKEN_SIGN_KEY)
                     .build()
                     .parseClaimsJws(token);
             return claimsJws.getBody();
